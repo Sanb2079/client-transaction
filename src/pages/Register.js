@@ -1,8 +1,8 @@
 Register.js;
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { CustomeInput } from "../components/layout/customInput";
-import { Layout } from "../components/layout/layout";
+import { CustomInput } from "../components/custom-input/CustomInput";
+import { Layout } from "../components/layout/Layout";
 
 export const Register = () => {
   const inputFields = [
@@ -38,7 +38,7 @@ export const Register = () => {
         <hr />
 
         {inputFields.map((item) => (
-          <CustomeInput {...item} />
+          <CustomInput {...item} />
         ))}
 
         <Button variant="primary" type="submit">

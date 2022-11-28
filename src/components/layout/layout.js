@@ -1,8 +1,8 @@
 import React from "react";
 import Container from "react-bootstrap/esm/Container";
-import { Header } from "./header";
+import { Header } from "./Header";
 
-export const layout = ({ children }) => {
+export const Layout = ({ children }) => {
   return (
     <div className="layout">
       <Header />
