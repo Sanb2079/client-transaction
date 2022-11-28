@@ -1,8 +1,13 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { Login } from "./components/pages/login";
 
 function App() {
-  return <div className=""></div>;
+  return (
+    <div>
+      <Login />
+    </div>
+  );
 }
 
 export default App;
