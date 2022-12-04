@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import { CustomInput } from "../components/custom-input/CustomInput";
 import { Layout } from "../components/layout/Layout";
-import { postUser } from "../utils/axiosHelper";
+import { loginUser } from "../utils/axiosHelper";
 
 export const Login = () => {
   const [form, setForm] = useState({});
@@ -21,7 +21,7 @@ export const Login = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    const { data } = await postUser(form);
+    const { data } = await loginUser(form);
     setResponse(data);
   };
 
@@ -50,7 +50,12 @@ export const Login = () => {
         <h2>Welcome Back!</h2>
         <hr />
 
-        {response.message && (
+        {/* {response.message && (
+          <Alert variant={response.status === "success" ? "success" : "danger"}>
+            {response.message}
+          </Alert>
+        )} */}
+        {response.status === "error" && (
           <Alert variant={response.status === "success" ? "success" : "danger"}>
             {response.message}
           </Alert>
