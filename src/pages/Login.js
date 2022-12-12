@@ -6,13 +6,20 @@ import { Link } from "react-router-dom";
 import { CustomInput } from "../components/custom-input/CustomInput";
 import { Layout } from "../components/layout/Layout";
 import { loginUser } from "../utils/axiosHelper";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
-  const [form, setForm] = useState({});
+  const navigate = useNavigate();
+  // const [form, setForm] = useState({});
+  const [form, setForm] = useState({
+    email: "san11@me.com",
+    pin: 1234,
+  });
   const [response, setResponse] = useState({});
 
   const handleOnChange = (e) => {
-    const { value, name } = e.target;
+    // const { value, name } = e.target;
+    const { name, value } = e.target;
     setForm({
       ...form,
       [name]: value,
@@ -21,8 +28,19 @@ export const Login = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
+
     const { data } = await loginUser(form);
     setResponse(data);
+    //  data.success === "success" && navigate("/dashboard");
+    //storing data in session
+    console.log(data);
+    if (data.status === "success") {
+      navigate("/dashboard");
+      sessionStorage.setItem("user", JSON.stringify(data.user));
+    }
+    // sessionStorage.setItem("user", JSON.stringify(data.user));
+    //storing in local
+    //localStorage.setItem("user", JSON.stringify(data.user));
   };
 
   const inputFields = [
