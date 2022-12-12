@@ -35,8 +35,11 @@ export const TransForm = ({ getTrans }) => {
     //using toastify to show message
     const { status, message } = await postTrans(form);
 
-    toast[status](message);
-    status === "success" && getTrans();
+    // toast[status](message);
+    if (status === "success") {
+      toast[status](message);
+      getTrans();
+    }
     // toast.success("Success Notification !", {
     //   position: toast.POSITION.TOP_RIGHT,
     // });
